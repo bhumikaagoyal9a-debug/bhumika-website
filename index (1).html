@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Dashboard</title>
+
+  <!-- Font Awesome (free icon library, loaded from CDN) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Button that reveals the sidebar on small screens -->
+  <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+
+  <!-- Dark overlay shown behind the sidebar on mobile -->
+  <div class="overlay" id="overlay"></div>
+
+  <div class="app">
+
+    <!-- ============ SIDEBAR ============ -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-brand">
+        <span class="brand-mark"><i class="fa-solid fa-graduation-cap"></i></span>
+        <span class="brand-name">StudyPath</span>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="#dashboard" class="nav-link active" data-section="dashboard">
+          <i class="fa-solid fa-table-columns nav-icon"></i> Dashboard
+        </a>
+        <a href="#courses" class="nav-link" data-section="courses">
+          <i class="fa-solid fa-book-open nav-icon"></i> Courses
+        </a>
+        <a href="#assignments" class="nav-link" data-section="assignments">
+          <i class="fa-solid fa-pen-to-square nav-icon"></i> Assignments
+        </a>
+        <a href="#profile" class="nav-link" data-section="profile">
+          <i class="fa-solid fa-user nav-icon"></i> Profile
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <p>Logged in as</p>
+        <strong id="sidebarUserName">Ananya Sharma</strong>
+      </div>
+    </aside>
+
+    <!-- ============ MAIN CONTENT ============ -->
+    <main class="main">
+
+      <!-- Top header: student name + semester -->
+      <header class="topbar">
+        <div>
+          <h1 id="studentName">Welcome back, Ananya</h1>
+          <p class="semester-label" id="semesterLabel">Semester 4 &middot; B.Tech Computer Science</p>
+        </div>
+        <div class="avatar" id="avatar">AS</div>
+      </header>
+
+      <!-- ============ DASHBOARD SECTION ============ -->
+      <section class="section active" id="dashboard">
+
+        <!-- Summary cards -->
+        <div class="cards-grid">
+
+          <article class="card">
+            <div class="card-top">
+              <span class="card-label">Attendance</span>
+              <span class="card-icon icon-blue"><i class="fa-solid fa-calendar-check"></i></span>
+            </div>
+            <p class="card-value" id="attendanceValue">86%</p>
+            <p class="card-sub">Last 90 days</p>
+          </article>
+
+          <article class="card">
+            <div class="card-top">
+              <span class="card-label">CGPA</span>
+              <span class="card-icon icon-gold"><i class="fa-solid fa-star"></i></span>
+            </div>
+            <p class="card-value" id="cgpaValue">8.7</p>
+            <p class="card-sub">Out of 10.0</p>
+          </article>
+
+          <article class="card">
+            <div class="card-top">
+              <span class="card-label">Assignments</span>
+              <span class="card-icon icon-green"><i class="fa-solid fa-clipboard-check"></i></span>
+            </div>
+            <p class="card-value" id="assignmentsValue">9 / 12</p>
+            <p class="card-sub">Completed this semester</p>
+          </article>
+
+          <article class="card">
+            <div class="card-top">
+              <span class="card-label">Courses</span>
+              <span class="card-icon icon-purple"><i class="fa-solid fa-book"></i></span>
+            </div>
+            <p class="card-value" id="coursesValue">6</p>
+            <p class="card-sub">Enrolled this semester</p>
+          </article>
+
+        </div>
+
+        <!-- Attendance progress bar -->
+        <div class="panel">
+          <div class="panel-heading">
+            <h2><i class="fa-solid fa-chart-simple"></i> Attendance overview</h2>
+            <span class="panel-heading-value" id="attendanceText">86% present</span>
+          </div>
+
+          <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="86">
+            <div class="progress-fill" id="attendanceBar"></div>
+          </div>
+
+          <div class="progress-scale">
+            <span>0%</span>
+            <span>Minimum required: 75%</span>
+            <span>100%</span>
+          </div>
+        </div>
+
+        <!-- Upcoming assignments preview -->
+        <div class="panel">
+          <div class="panel-heading">
+            <h2><i class="fa-solid fa-list-check"></i> Upcoming assignments</h2>
+          </div>
+          <ul class="list" id="upcomingList">
+            <!-- Filled in by script.js -->
+          </ul>
+        </div>
+
+      </section>
+
+      <!-- ============ COURSES SECTION ============ -->
+      <section class="section" id="courses">
+        <div class="panel">
+          <div class="panel-heading">
+            <h2><i class="fa-solid fa-book-open"></i> My courses</h2>
+          </div>
+          <div class="table-wrap">
+            <table class="data-table" id="coursesTable">
+              <thead>
+                <tr>
+                  <th>Course</th>
+                  <th>Instructor</th>
+                  <th>Credits</th>
+                  <th>Grade</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Filled in by script.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ ASSIGNMENTS SECTION ============ -->
+      <section class="section" id="assignments">
+        <div class="panel">
+          <div class="panel-heading">
+            <h2><i class="fa-solid fa-pen-to-square"></i> All assignments</h2>
+          </div>
+          <ul class="list" id="assignmentsList">
+            <!-- Filled in by script.js -->
+          </ul>
+        </div>
+      </section>
+
+      <!-- ============ PROFILE SECTION ============ -->
+      <section class="section" id="profile">
+        <div class="panel profile-panel">
+          <div class="profile-header">
+            <div class="avatar avatar-large" id="profileAvatar">AS</div>
+            <div>
+              <h2 id="profileName">Ananya Sharma</h2>
+              <p class="semester-label" id="profileMeta">Semester 4 &middot; B.Tech Computer Science</p>
+            </div>
+          </div>
+          <dl class="profile-details">
+            <div>
+              <dt><i class="fa-solid fa-id-card"></i> Roll number</dt>
+              <dd>CSE-2023-041</dd>
+            </div>
+            <div>
+              <dt><i class="fa-solid fa-envelope"></i> Email</dt>
+              <dd>ananya.sharma@studypath.edu</dd>
+            </div>
+            <div>
+              <dt><i class="fa-solid fa-chalkboard-user"></i> Advisor</dt>
+              <dd>Dr. Rahul Mehta</dd>
+            </div>
+            <div>
+              <dt><i class="fa-solid fa-star"></i> Current CGPA</dt>
+              <dd>8.7 / 10.0</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
